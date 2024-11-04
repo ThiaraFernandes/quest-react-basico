@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Card from "./Components/Cards/Card";
+import Button from "./Components/Button/Button"
+
+
 
 function App() {
+  //Inicializar o estado com a label Clique aqui
+  const[buttonLabel, setButtonLabel] = useState('Clique aqui');
+  const[fontColor, setFontColor] = useState('#000');
+
+  const handleClick = () => {
+    //Atualiza a label do botão
+    setButtonLabel('Baixar CV');
+
+    alert('A label desse botão é Baixar CV');
+
+    //alterar a cor do botão, após o alert
+    setFontColor('#ff6347')
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Card text="Este é um parágrafo estilizado em React" color="#ff6347" />
+      <Button onClick={handleClick} label={buttonLabel} fontColor={fontColor}/>
+    </>
+
   );
 }
 
